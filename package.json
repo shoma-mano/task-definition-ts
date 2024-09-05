@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "unbuild",
-    "release": "changelogen --release --push  --publish"
+    "release": "unbuild && changelogen --release --push  --publish"
   },
   "files": [
     "dist"
