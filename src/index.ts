@@ -17,4 +17,4 @@ export const defineTaskDefinition = (
   writeFileSync(distPath, json);
 };
 
-export type { ECSTaskDefinition } from "./interface";
+export * from "./interface";

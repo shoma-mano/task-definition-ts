@@ -87,7 +87,7 @@ export interface ECSTaskDefinition {
 /**
  * Interface representing a container definition inside a task definition.
  */
-interface ContainerDefinition {
+export interface ContainerDefinition {
   /**
    * The name of the container.
    */
@@ -197,7 +197,7 @@ interface ContainerDefinition {
 /**
  * Represents an environment variable for a container.
  */
-interface EnvironmentVariable {
+export interface EnvironmentVariable {
   name: string;
   value: string;
 }
@@ -222,7 +222,7 @@ interface EnvironmentVariable {
  *
  * For more information, see the AWS documentation on port mappings in ECS.
  */
-interface PortMapping {
+export interface PortMapping {
   /**
    * The port number on the container that's bound to the user-specified
    * or automatically assigned `hostPort`.
@@ -298,7 +298,7 @@ interface PortMapping {
 /**
  * Represents a mount point for a container.
  */
-interface MountPoint {
+export interface MountPoint {
   sourceVolume: string;
   containerPath: string;
   readOnly?: boolean;
@@ -307,7 +307,7 @@ interface MountPoint {
 /**
  * Represents a volume to mount from another container.
  */
-interface VolumeFrom {
+export interface VolumeFrom {
   sourceContainer: string;
   readOnly?: boolean;
 }
@@ -315,7 +315,7 @@ interface VolumeFrom {
 /**
  * Represents the log configuration for a container.
  */
-interface LogConfiguration {
+export interface LogConfiguration {
   logDriver: string;
   options?: { [key: string]: string };
   secretOptions?: Secret[];
@@ -324,7 +324,7 @@ interface LogConfiguration {
 /**
  * Represents the health check configuration for a container.
  */
-interface HealthCheck {
+export interface HealthCheck {
   command: string[];
   interval?: number;
   timeout?: number;
@@ -335,7 +335,7 @@ interface HealthCheck {
 /**
  * Represents a secret to be passed to the container from Secrets Manager or SSM Parameter Store.
  */
-interface Secret {
+export interface Secret {
   name: string;
   valueFrom: string;
 }
@@ -343,7 +343,7 @@ interface Secret {
 /**
  * Represents a ulimit for a container.
  */
-interface Ulimit {
+export interface Ulimit {
   name: string;
   softLimit: number;
   hardLimit: number;
@@ -352,7 +352,7 @@ interface Ulimit {
 /**
  * Linux-specific options for the container.
  */
-interface LinuxParameters {
+export interface LinuxParameters {
   capabilities?: {
     add?: string[];
     drop?: string[];
@@ -366,7 +366,7 @@ interface LinuxParameters {
 /**
  * Represents a device to be exposed to the container.
  */
-interface Device {
+export interface Device {
   hostPath: string;
   containerPath?: string;
   permissions?: ("read" | "write" | "mknod")[];
@@ -375,7 +375,7 @@ interface Device {
 /**
  * Represents a temporary file system (tmpfs) mount for a container.
  */
-interface Tmpfs {
+export interface Tmpfs {
   containerPath: string;
   size: number;
   mountOptions?: string[];
@@ -384,7 +384,7 @@ interface Tmpfs {
 /**
  * Represents a volume definition.
  */
-interface Volume {
+export interface Volume {
   name: string;
   host?: {
     sourcePath?: string;
@@ -396,7 +396,7 @@ interface Volume {
 /**
  * Represents Docker-specific volume configuration.
  */
-interface DockerVolumeConfiguration {
+export interface DockerVolumeConfiguration {
   scope?: "task" | "shared";
   autoprovision?: boolean;
   driver?: string;
@@ -407,7 +407,7 @@ interface DockerVolumeConfiguration {
 /**
  * Represents Amazon EFS volume configuration.
  */
-interface EFSVolumeConfiguration {
+export interface EFSVolumeConfiguration {
   fileSystemId: string;
   rootDirectory?: string;
   transitEncryption?: "ENABLED" | "DISABLED";
@@ -421,7 +421,7 @@ interface EFSVolumeConfiguration {
 /**
  * Represents a tag associated with a task definition.
  */
-interface Tag {
+export interface Tag {
   key: string;
   value: string;
 }
@@ -429,14 +429,14 @@ interface Tag {
 /**
  * Represents an ephemeral storage configuration for Fargate tasks.
  */
-interface EphemeralStorage {
+export interface EphemeralStorage {
   sizeInGiB: number;
 }
 
 /**
  * Represents a placement constraint for task placement.
  */
-interface PlacementConstraint {
+export interface PlacementConstraint {
   type: "memberOf";
   expression: string;
 }
