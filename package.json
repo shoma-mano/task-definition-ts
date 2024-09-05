@@ -1,22 +1,20 @@
 {
   "name": "task-definition-ts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
         "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
     }
   },
   "scripts": {
     "build": "unbuild",
-    "release": "changelogen --release --push  --publish"
+    "release": "unbuild && changelogen --release --push  --publish"
   },
   "files": [
     "dist"

@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.7
+
+[compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.6...v1.0.7)
+
+### 🩹 Fixes
+
+- Fix output path ([e4cea4e](https://github.com/shoma-mano/task-definition-ts/commit/e4cea4e))
+
+### ❤️ Contributors
+
+- Shoma-mano <ms2geki@gmail.com>
+
 ## v1.0.6
 
 [compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.5...v1.0.6)
