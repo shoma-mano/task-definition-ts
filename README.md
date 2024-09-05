@@ -2,7 +2,7 @@
 
 A TypeScript-based ecs task definition generator.
 
-![alt text](image.png)
+![alt text](https://raw.githubusercontent.com/shoma-mano/task-definition-ts/main/image.png)
 
 ## Installation
 
