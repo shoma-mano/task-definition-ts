@@ -77,11 +77,7 @@ export interface ECSTaskDefinition {
     | "WINDOWS_SERVER_2022_FULL"
     | "WINDOWS_SERVER_2022_CORE";
 
-  /**
-   * The CPU architecture of the task.
-   * Required for Fargate.
-   */
-  cpuArchitecture?: "X86_64" | "ARM64";
+  runtimePlatform?: RuntimePlatform;
 }
 
 /**
@@ -439,4 +435,65 @@ export interface EphemeralStorage {
 export interface PlacementConstraint {
   type: "memberOf";
   expression: string;
+}
+
+/**
+ * The runtime platform configuration for an ECS task definition.
+ * This configuration defines the operating system family and CPU architecture.
+ */
+export interface RuntimePlatform {
+  /**
+   * The operating system family for the ECS task.
+   *
+   * Required: Conditional (Required for tasks hosted on Fargate)
+   *
+   * Default: LINUX
+   *
+   * Valid values for Fargate tasks:
+   * - "LINUX"
+   * - "WINDOWS_SERVER_2019_FULL"
+   * - "WINDOWS_SERVER_2019_CORE"
+   * - "WINDOWS_SERVER_2022_FULL"
+   * - "WINDOWS_SERVER_2022_CORE"
+   *
+   * Valid values for EC2 tasks:
+   * - "LINUX"
+   * - "WINDOWS_SERVER_2016_FULL"
+   * - "WINDOWS_SERVER_2019_FULL"
+   * - "WINDOWS_SERVER_2019_CORE"
+   * - "WINDOWS_SERVER_2022_FULL"
+   * - "WINDOWS_SERVER_2022_CORE"
+   * - "WINDOWS_SERVER_2004_CORE"
+   * - "WINDOWS_SERVER_20H2_CORE"
+   *
+   * All task definitions used in the same service must have the same value for this parameter.
+   * When the task definition is part of a service, this value must match the `platformFamily` of the service.
+   */
+  operatingSystemFamily?:
+    | "LINUX"
+    | "WINDOWS_SERVER_2019_FULL"
+    | "WINDOWS_SERVER_2019_CORE"
+    | "WINDOWS_SERVER_2022_FULL"
+    | "WINDOWS_SERVER_2022_CORE"
+    | "WINDOWS_SERVER_2016_FULL"
+    | "WINDOWS_SERVER_2004_CORE"
+    | "WINDOWS_SERVER_20H2_CORE";
+
+  /**
+   * The CPU architecture for the ECS task.
+   *
+   * Required: Conditional (Required for tasks hosted on Fargate)
+   *
+   * Default: X86_64
+   *
+   * Valid values:
+   * - "X86_64" (Default)
+   * - "ARM64"
+   *
+   * If left null, the default value is automatically assigned for Fargate tasks upon initiation.
+   *
+   * When using Linux tasks with Fargate or EC2, the value can be set to "ARM64" for ARM-based workloads.
+   * All task definitions used in the same service must have the same value for this parameter.
+   */
+  cpuArchitecture?: "X86_64" | "ARM64";
 }
