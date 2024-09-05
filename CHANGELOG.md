@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.5
+
+[compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.4...v1.0.5)
+
+### 🏡 Chore
+
+- Update-package.json ([bfe865a](https://github.com/shoma-mano/task-definition-ts/commit/bfe865a))
+
+### ❤️ Contributors
+
+- Shoma-mano <ms2geki@gmail.com>
+
 ## v1.0.4
 
 [compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.3...v1.0.4)
