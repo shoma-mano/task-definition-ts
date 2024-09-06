@@ -1,4 +1,4 @@
-dist
+# dist
 node_modules
 test
 eas.config.ts
