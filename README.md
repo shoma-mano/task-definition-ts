@@ -23,7 +23,7 @@ defineTaskDefinition(
   },
   // The default output directory is the same as where this file is located
   // e.g. if file path is .github/task-defenition/express.ts, .github/task-defenition/express.json is generated.
-  "path/to/taskdefinition",
+  "path/to/taskdefinition.json",
 );
 ```
 
