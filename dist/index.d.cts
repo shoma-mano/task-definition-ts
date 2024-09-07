@@ -1,7 +1,7 @@
 /**
  * Interface representing an ECS Task Definition.
  */
-export interface ECSTaskDefinition {
+interface ECSTaskDefinition {
     /**
      * The family name for the task definition.
      * A family acts as a group for multiple versions of the same task.
@@ -64,7 +64,7 @@ export interface ECSTaskDefinition {
 /**
  * Interface representing a container definition inside a task definition.
  */
-export interface ContainerDefinition {
+interface ContainerDefinition {
     /**
      * The name of the container.
      */
@@ -153,7 +153,7 @@ export interface ContainerDefinition {
 /**
  * Represents an environment variable for a container.
  */
-export interface EnvironmentVariable {
+interface EnvironmentVariable {
     name: string;
     value: string;
 }
@@ -177,7 +177,7 @@ export interface EnvironmentVariable {
  *
  * For more information, see the AWS documentation on port mappings in ECS.
  */
-export interface PortMapping {
+interface PortMapping {
     /**
      * The port number on the container that's bound to the user-specified
      * or automatically assigned `hostPort`.
@@ -246,7 +246,7 @@ export interface PortMapping {
 /**
  * Represents a mount point for a container.
  */
-export interface MountPoint {
+interface MountPoint {
     sourceVolume: string;
     containerPath: string;
     readOnly?: boolean;
@@ -254,14 +254,14 @@ export interface MountPoint {
 /**
  * Represents a volume to mount from another container.
  */
-export interface VolumeFrom {
+interface VolumeFrom {
     sourceContainer: string;
     readOnly?: boolean;
 }
 /**
  * Represents the log configuration for a container.
  */
-export interface LogConfiguration {
+interface LogConfiguration {
     logDriver: string;
     options?: {
         [key: string]: string;
@@ -271,7 +271,7 @@ export interface LogConfiguration {
 /**
  * Represents the health check configuration for a container.
  */
-export interface HealthCheck {
+interface HealthCheck {
     command: string[];
     interval?: number;
     timeout?: number;
@@ -281,14 +281,14 @@ export interface HealthCheck {
 /**
  * Represents a secret to be passed to the container from Secrets Manager or SSM Parameter Store.
  */
-export interface Secret {
+interface Secret {
     name: string;
     valueFrom: string;
 }
 /**
  * Represents a ulimit for a container.
  */
-export interface Ulimit {
+interface Ulimit {
     name: string;
     softLimit: number;
     hardLimit: number;
@@ -296,7 +296,7 @@ export interface Ulimit {
 /**
  * Linux-specific options for the container.
  */
-export interface LinuxParameters {
+interface LinuxParameters {
     capabilities?: {
         add?: string[];
         drop?: string[];
@@ -309,7 +309,7 @@ export interface LinuxParameters {
 /**
  * Represents a device to be exposed to the container.
  */
-export interface Device {
+interface Device {
     hostPath: string;
     containerPath?: string;
     permissions?: ("read" | "write" | "mknod")[];
@@ -317,7 +317,7 @@ export interface Device {
 /**
  * Represents a temporary file system (tmpfs) mount for a container.
  */
-export interface Tmpfs {
+interface Tmpfs {
     containerPath: string;
     size: number;
     mountOptions?: string[];
@@ -325,7 +325,7 @@ export interface Tmpfs {
 /**
  * Represents a volume definition.
  */
-export interface Volume {
+interface Volume {
     name: string;
     host?: {
         sourcePath?: string;
@@ -336,7 +336,7 @@ export interface Volume {
 /**
  * Represents Docker-specific volume configuration.
  */
-export interface DockerVolumeConfiguration {
+interface DockerVolumeConfiguration {
     scope?: "task" | "shared";
     autoprovision?: boolean;
     driver?: string;
@@ -350,7 +350,7 @@ export interface DockerVolumeConfiguration {
 /**
  * Represents Amazon EFS volume configuration.
  */
-export interface EFSVolumeConfiguration {
+interface EFSVolumeConfiguration {
     fileSystemId: string;
     rootDirectory?: string;
     transitEncryption?: "ENABLED" | "DISABLED";
@@ -363,20 +363,20 @@ export interface EFSVolumeConfiguration {
 /**
  * Represents a tag associated with a task definition.
  */
-export interface Tag {
+interface Tag {
     key: string;
     value: string;
 }
 /**
  * Represents an ephemeral storage configuration for Fargate tasks.
  */
-export interface EphemeralStorage {
+interface EphemeralStorage {
     sizeInGiB: number;
 }
 /**
  * Represents a placement constraint for task placement.
  */
-export interface PlacementConstraint {
+interface PlacementConstraint {
     type: "memberOf";
     expression: string;
 }
@@ -384,7 +384,7 @@ export interface PlacementConstraint {
  * The runtime platform configuration for an ECS task definition.
  * This configuration defines the operating system family and CPU architecture.
  */
-export interface RuntimePlatform {
+interface RuntimePlatform {
     /**
      * The operating system family for the ECS task.
      *
@@ -431,3 +431,7 @@ export interface RuntimePlatform {
      */
     cpuArchitecture?: "X86_64" | "ARM64";
 }
+
+declare const defineTaskDefinition: (props: ECSTaskDefinition, distPath?: string) => void;
+
+export { type ContainerDefinition, type Device, type DockerVolumeConfiguration, type ECSTaskDefinition, type EFSVolumeConfiguration, type EnvironmentVariable, type EphemeralStorage, type HealthCheck, type LinuxParameters, type LogConfiguration, type MountPoint, type PlacementConstraint, type PortMapping, type RuntimePlatform, type Secret, type Tag, type Tmpfs, type Ulimit, type Volume, type VolumeFrom, defineTaskDefinition };

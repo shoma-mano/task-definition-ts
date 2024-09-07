@@ -1,36 +1,45 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _exportNames = {
-  defineTaskDefinition: true
-};
-exports.defineTaskDefinition = void 0;
-var _fs = require("fs");
-var _getCallerFile = _interopRequireDefault(require("get-caller-file"));
-var _interface = require("./interface.cjs");
-Object.keys(_interface).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _interface[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _interface[key];
+const fs = require('fs');
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+// Call this function in a another function to find out the file from
+// which that function was called from. (Inspects the v8 stack trace)
+//
+// Inspired by http://stackoverflow.com/questions/13227489
+var getCallerFile = function getCallerFile(position) {
+    if (position === void 0) { position = 2; }
+    if (position >= Error.stackTraceLimit) {
+        throw new TypeError('getCallerFile(position) requires position be less then Error.stackTraceLimit but position was: `' + position + '` and Error.stackTraceLimit was: `' + Error.stackTraceLimit + '`');
     }
-  });
-});
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+    var oldPrepareStackTrace = Error.prepareStackTrace;
+    Error.prepareStackTrace = function (_, stack) { return stack; };
+    var stack = new Error().stack;
+    Error.prepareStackTrace = oldPrepareStackTrace;
+    if (stack !== null && typeof stack === 'object') {
+        // stack[0] holds this file
+        // stack[1] holds where this function was called
+        // stack[2] holds the file we're interested in
+        return stack[position] ? stack[position].getFileName() : undefined;
+    }
+};
+
+
+const getCallerFile$1 = /*@__PURE__*/getDefaultExportFromCjs(getCallerFile);
+
 const defineTaskDefinition = (props, distPath) => {
   console.log("defineTaskDefinition");
-  const callerFile = (0, _getCallerFile.default)();
+  const callerFile = getCallerFile$1();
   if (!callerFile) {
     throw new Error("Cannot find caller file");
   }
   distPath = distPath ?? callerFile.replace(".ts", ".json");
   console.log(`Writing to ${distPath}`);
   const json = JSON.stringify(props, null, 2);
-  (0, _fs.writeFileSync)(distPath, json);
+  fs.writeFileSync(distPath, json);
 };
+
 exports.defineTaskDefinition = defineTaskDefinition;
