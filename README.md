@@ -22,6 +22,7 @@ defineTaskDefinition(
     // Your task definition goes here
   },
   // The default output directory is the same as where this file is located
+  // e.g. if file path is .github/task-defenition/express.ts, .github/task-defenition/express.json is generated.
   "path/to/taskdefinition",
 );
 ```
@@ -30,6 +31,16 @@ defineTaskDefinition(
 
 ```bash
 npx tsx taskdefenition.ts
+```
+
+## CI
+
+If you want to completely remove the JSON file from the codebase, you can generate it on demand in the CI pipeline.  
+Unfortunately, the package manager doesn't seem to offer a feature to install just one package when a package.json file exists in the project.  
+So, if you want to use this package without installing all dependencies, you can use this script.
+
+```shell
+git clone https://github.com/shoma-mano/task-definition-ts ./node_modules/task-definition-ts
 ```
 
 # Contributing
