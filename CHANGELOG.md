@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.17
+
+[compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.16...v1.0.17)
+
+### 🩹 Fixes
+
+- Implement get-caller-file by own ([f80d10b](https://github.com/shoma-mano/task-definition-ts/commit/f80d10b))
+
+### ❤️ Contributors
+
+- Shoma-mano <ms2geki@gmail.com>
+
 ## v1.0.16
 
 [compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.15...v1.0.16)
