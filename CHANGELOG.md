@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.0.16
+
+[compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.15...v1.0.16)
+
+### 🩹 Fixes
+
+- Change getCallerFile to caller-path ([b87fa2a](https://github.com/shoma-mano/task-definition-ts/commit/b87fa2a))
+
+### 🏡 Chore
+
+- Update-readme.md ([52c4a8e](https://github.com/shoma-mano/task-definition-ts/commit/52c4a8e))
+
+### ❤️ Contributors
+
+- Shoma-mano <ms2geki@gmail.com>
+
 ## v1.0.15
 
 [compare changes](https://github.com/shoma-mano/task-definition-ts/compare/v1.0.14...v1.0.15)
