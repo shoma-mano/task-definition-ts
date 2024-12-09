@@ -1,13 +1,13 @@
 import type { ECSTaskDefinition } from "./interface";
 import { writeFileSync } from "fs";
-import callerPath from "caller-path";
+import { getCallerFile } from "./get-callert";
 
 export const defineTaskDefinition = (
   props: ECSTaskDefinition,
   distPath?: string,
 ) => {
   console.log("defineTaskDefinition");
-  const callerFile = callerPath();
+  const callerFile = getCallerFile();
   if (!callerFile) {
     throw new Error("Cannot find caller file");
   }
