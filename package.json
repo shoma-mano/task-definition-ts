@@ -30,8 +30,11 @@
   "devDependencies": {
     "@types/node": "^22.5.4",
     "changelogen": "^0.5.5",
+    "get-caller-file": "^2.0.5",
     "prettier": "^3.3.3",
-    "unbuild": "^2.0.0",
-    "get-caller-file": "^2.0.5"
+    "unbuild": "^2.0.0"
+  },
+  "dependencies": {
+    "caller-path": "^4.0.0"
   }
 }
